@@ -1,8 +1,3 @@
 # Contribution Guide
-#### Branches:
- 
----
-#### Epics:
 
----
-#### Issues: 
+    After a meeting claim an issue by assigning yourself. To start working create a branch of development called your initials in caps and a short issue discription(no more than two words). After having finishing the issue create a pull request and request a code review by any other member of the team. When the review is finished merge, close the issue, and delete the branch from origin.
