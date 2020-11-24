@@ -3,7 +3,9 @@ let app = express.application;
 
 let port: number = 3333;
 
-
+app.get("/", (req , res) =>{
+    res.send("test");
+});
 
 app.listen(port, () => {
     console.log('listening on port ${port}');
