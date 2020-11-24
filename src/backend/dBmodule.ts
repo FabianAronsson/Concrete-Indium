@@ -9,8 +9,8 @@ db.on('open', function() {
 });
 
 
-export storeInput = (input) => {
+export function storeInput(input){
     input.save(() => {
-        console.log("save successful")
+        //console.log("save successful")
     });
 };
