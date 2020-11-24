@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
-      "module": "system",
+      "module": "CommonJS",
       "noImplicitAny": true,
       "removeComments": true,
       "preserveConstEnums": true,
-      "outDir": "dist/ts/",
+      "outDir": "dist/",
       "sourceMap": true
     },
     "include": ["src/**/*"],
