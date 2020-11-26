@@ -10,7 +10,15 @@ export function connect() {
     db.on('error', console.error.bind(console, 'connection error:'));
     db.on('open', function() : void{
         //PogChamp
+        console.log("opened db connection");
     });
+    db.on('close', () => {
+        console.log("closed db connection");
+    });
+}
+
+export function dispose() {
+    db.close();
 }
 
 

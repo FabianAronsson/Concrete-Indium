@@ -1,9 +1,14 @@
-import {storeInput} from './../dBmodule';
+import {storeInput, connect, dispose} from './../dBmodule';
 import User from './../interfaces/user';
 
 export default class AuthenticationModule {
 
-
+    /**
+     *
+     */
+    constructor() {
+        connect(); //TODO: inject instead and or add disposal
+    }
     ///
     authenticateUser(token:string):boolean {
 
