@@ -1,14 +1,25 @@
 import {storeInput} from './../dBmodule';
-import user from './../interfaces/user';
+import User from './../interfaces/user';
 
-export default class authenticationModule{
+export default class AuthenticationModule{
 
+
+    ///
     authenticateUser(token:string):boolean{
 
         return false;
     }
 
-    createToken(user:user):string{
+
+    ///
+    createToken(user:User):string{
+
+        return "";
+    }
+
+
+    ///
+    getToken(user:User):string {
 
         return "";
     }
