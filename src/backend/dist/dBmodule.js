@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.storeInput = void 0;
 var mongoose = require("mongoose");
 mongoose.connect('mongodb://localhost/test', { useNewUrlParser: true });
