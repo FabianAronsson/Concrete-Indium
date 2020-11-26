@@ -1,0 +1,8 @@
+@import "./_variables";
+@import "./_functions";
+.text{ //example
+    color: $textColor;
+    //or, but use the below for the most part
+    @include setColor($textColor);
+}
+
