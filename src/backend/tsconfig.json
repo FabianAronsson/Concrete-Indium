@@ -1,11 +1,16 @@
 {
     "compilerOptions": {
+      "target": "es5",
       "module": "CommonJS",
+      "lib": ["es6", "dom"],
+      "types": ["reflect-metadata"],
       "noImplicitAny": true,
       "removeComments": true,
       "preserveConstEnums": true,
       "outDir": "dist/",
-      "sourceMap": true
+      "sourceMap": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "**/*.spec.ts"]
