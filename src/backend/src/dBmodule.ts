@@ -3,7 +3,7 @@ import * as mongoose from "mongoose";
 let db:mongoose.Connection = null;
 
 
-export function connect() {
+export function connect(): void {
     mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
 
     db = mongoose.connection;
@@ -17,12 +17,15 @@ export function connect() {
     });
 }
 
-export function dispose() {
-    db.close();
+export function dispose(): void {
+    if (db != null) {
+        db.close();
+    }
+    
 }
 
 
-export function storeInput(input: any){
+export function storeInput(input: any): void{
     input.save(() => {
         //console.log("save successful")
     });
