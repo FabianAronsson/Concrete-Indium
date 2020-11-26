@@ -10,6 +10,8 @@
 
 <style lang="scss">
 @import './sass/main.scss';
+
+//below should be removed in the future to use sass instead or handled differently
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
