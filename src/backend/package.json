@@ -2,9 +2,10 @@
   "name": "concrete-indium-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/server.ts",
+  "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "node dist/server.js",
+    "build": "tsc"
   },
   "author": "",
   "license": "MIT",
