@@ -5,7 +5,7 @@ var express = require("express");
 function userRoute() {
     var router = express.Router();
     router.post("/", function (req, res) {
-        res.send("test send");
+        res.send("POST /user/");
     });
     return router;
 }
