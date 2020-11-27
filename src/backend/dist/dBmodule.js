@@ -1,6 +1,5 @@
 "use strict";
-exports.__esModule = true;
-exports.storeInput = exports.connect = void 0;
+
 var mongoose = require("mongoose");
 var db;
 function connect() {

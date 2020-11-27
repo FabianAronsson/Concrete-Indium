@@ -1,0 +1,1 @@
+{"version":3,"file":"inversify.config.js","sourceRoot":"","sources":["../src/inversify.config.ts"],"names":[],"mappings":";;AAAA,iCAA2B;AAC3B,uCAAsC;AAGtC,gDAA2C;AAG3C,IAAI,SAAS,GAAG,IAAI,qBAAS,CAAC,EAAE,YAAY,EAAE,WAAW,EAAE,CAAC,CAAC;AAG7D,SAAS,CAAC,IAAI,CAAqB,eAAK,CAAC,SAAS,CAAC,CAAC,EAAE,CAAC,mBAAS,CAAC,CAAC;AAElE,kBAAe,SAAS,CAAC"}
