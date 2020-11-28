@@ -1,5 +1,7 @@
 # Concrete-Indium
-Projekt inom webbserver
+Webbserverprojekt
+
+Ett projekt inom webbserver där målet är en dynamisk hemsida med livechatt och forum.
 
 # Members
 Fabian
