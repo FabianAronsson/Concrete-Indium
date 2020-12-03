@@ -2,9 +2,9 @@
     <div class="formContainer">
             <h1>hej</h1>
         <form action="" method="post">
-            <label for="email">Email</label>
+            <label for="email">Email</label><br>
             <input type="text"  id="email" name="email" placeholder="Yourname@domainName.com"><br>
-            <label for="password">Password</label>
+            <label for="password">Password</label><br>
             <input type="password" id="password" name="password">
         </form>
 

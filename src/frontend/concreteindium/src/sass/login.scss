@@ -1,0 +1,15 @@
+@import "./_variables";
+@import "./_functions";
+
+.formContainer{
+    display: flex;
+    width: 350px;
+    height: 400px;
+    margin: auto;
+    border-radius: 30px;
+    background-color: #212221;
+    color: aliceblue;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
