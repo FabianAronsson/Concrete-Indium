@@ -5,7 +5,7 @@ import "reflect-metadata";
 
 @injectable()
 export default class AuthenticationRoute implements AuthenticationRouteInterface {
-    userRoute(): express.Router {
+    authenticationRoute(): express.Router {
         let router = express.Router();
     
         router.post("/", (req, res) => {
