@@ -6,3 +6,10 @@
     @include setColor($textColor);
 }
 
+.formContainer{
+    width: 500px;
+    height: 600px;
+    border-radius: 50px;
+    background-color: #ee11ee;
+}
+
