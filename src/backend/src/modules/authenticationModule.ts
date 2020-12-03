@@ -1,5 +1,6 @@
 import {storeInput, connect, dispose} from './../dBmodule';
 import User from './../interfaces/user';
+import jwt from "jsonwebtoken";
 
 export default class AuthenticationModule {
 
@@ -22,8 +23,10 @@ export default class AuthenticationModule {
 
     ///
     createToken(user:User):string {
-
-        return "";
+        var TOKEN_SECRET = require('crypto').randomBytes(64).toString('hex');
+        var token = jwt.sign({ email: user.email }, TOKEN_SECRET, {expiresIn: '10m'} ) 
+        return token;
     }
 
+    
 }
