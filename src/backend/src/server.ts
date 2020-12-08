@@ -3,6 +3,8 @@ import UserRoute from "./interfaces/userRoute";
 import container from "./inversify.config";
 import conatiner from "./inversify.config";
 import TYPES from "./types";
+const config = require('./../../config.json');
+
 
 
 var userRoute = container.get<UserRoute>(TYPES.UserRoute).userRoute();
