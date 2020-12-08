@@ -1,9 +1,5 @@
 {
     "backend": {
-        "options": ""
-    },
-
-    "frontend": {
-        "options": ""
+        "options": "replace in the future"
     }
 }
