@@ -1,6 +1,6 @@
 import {storeInput, connect, dispose} from './../dBmodule';
 import User from './../interfaces/user';
-import jwt from "jsonwebtoken"; //error, no default export ???
+import * as jwt from "jsonwebtoken"; //error, no default export ???
 
 export default class AuthenticationModule {
 
