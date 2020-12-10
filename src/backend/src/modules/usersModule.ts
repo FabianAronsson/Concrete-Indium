@@ -3,7 +3,7 @@ import user from "../interfaces/user";
 import userModule from "../interfaces/userModule";
 import { injectable, inject } from "inversify";
 import "reflect-metadata";
-
+import * as dBmodule from "../dBmodule";
 
  
 const userSchema = new mongoose.Schema({
@@ -25,7 +25,7 @@ export default class UserModule implements userModule{
         email: email,
         password: password
       }) 
-      //replace with db module save
+     dBmodule.storeInput(newUser)
    }
   
   
