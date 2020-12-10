@@ -14,7 +14,10 @@ export default class AuthenticationModule implements IAuthenticationModule {
             },
             responseType: "json"
         }).then((result) => {
-
+            //parse json
+            //verify
+            //add to store
+            //etc
         });
     }
 }
