@@ -14,6 +14,6 @@ let container = new Container({ defaultScope: "Singleton" });
 //container.bind<type>(TYPES.type).to(implimentation);
 container.bind<UserRouteInterface>(TYPES.UserRoute).to(UserRoute);
 container.bind<AuthenticationRouteInterface>(TYPES.AuthenticationRoute).to(AuthenticationRoute);
-container.bind<ChatRouteInterface>(TYPES.UserRoute).to(ChatRoute);
+container.bind<ChatRouteInterface>(TYPES.ChatRoute).to(ChatRoute);
 
 export default container;
