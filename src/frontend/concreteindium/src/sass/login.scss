@@ -2,8 +2,8 @@
 @import "./_functions";
 
 
-.mainLogin{
-    background-image: url("./assets/testImage.jpg");
+#particles-js{
+    background-color: #000;
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -49,19 +49,20 @@
         padding-left: 20px;
     }
 
-    button{
-       
-        border: none;
-        background-color: rgb(255, 102, 0);
-        width: 40%;
-        height: 18%;
-        border-radius: 5px;
-        font-weight: bold;
-    }
+}
 
-    button:hover{
-        background-color: rgb(124, 39, 0);
-        color: aliceblue;
-    }
+#loginBtn{
+    border: none;
+    background-color: rgb(255, 102, 0);
+    width: 40%;
+    height: 18%;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+}
 
+#loginBtn:hover{
+    background-color: rgb(124, 39, 0);
+    color: aliceblue;
 }
