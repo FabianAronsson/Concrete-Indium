@@ -1,7 +1,9 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
+var dBmodule_1 = require("./../dBmodule");
 var AuthenticationModule = (function () {
     function AuthenticationModule() {
+        dBmodule_1.connect();
     }
     AuthenticationModule.prototype.authenticateUser = function (token) {
         return false;
@@ -14,5 +16,5 @@ var AuthenticationModule = (function () {
     };
     return AuthenticationModule;
 }());
-exports["default"] = AuthenticationModule;
+exports.default = AuthenticationModule;
 //# sourceMappingURL=authenticationModule.js.map
