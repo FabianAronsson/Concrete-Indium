@@ -11,6 +11,7 @@ export default class AuthenticationModule {
     constructor() {
         connect(); //TODO: inject instead and or add disposal
     }
+    
     ///
     authenticateUser(token:string):boolean {
 
@@ -23,20 +24,20 @@ export default class AuthenticationModule {
                 return true;
             }
           });
-          return false; // if for any reason, return false
+          return false; // if for any other reason, return false
     }
 
-    authenticateUserWithPassword(email:string, password:string):boolean {
+    authenticateUserWithPassword(password:string):boolean {
         try{
-            /*let user = findOne(person in database)*/
-            let user = ""; //dummy variable
+            /*let user = findOne(person in database, search for email)*/
+            let user = { hash: "" }; //dummy variable
             if(user){
-                let isPasswordCorrect:boolean = bcrypt.compare(email, password)
+                let isPasswordCorrect:boolean = bcrypt.compare(password, user.hash) //if user exists in DB then it will also have the corresponding hash
                 return isPasswordCorrect; 
             }
         }
         catch{ //error, password or email is incorrect
-            console.log("Wrong password or email. Or user does not exist")
+            console.log("Wrong password or email, or user does not exist")
             return false;
         }
     }
@@ -47,6 +48,4 @@ export default class AuthenticationModule {
         { algorithm: 'RS256', expiresIn: '10m' } ) 
         return signedToken;
     }
-
-    
 }

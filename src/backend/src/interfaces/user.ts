@@ -1,4 +1,5 @@
 import * as bcrypt from "bcrypt";
+import * as authModule from "./../modules/authenticationModule"
 
 export default interface User {
     //identifiers
@@ -8,17 +9,17 @@ export default interface User {
 
     //security
     passwordHash: string;
-    salt: string;
 
+    //token
     tokenGeneration: string;
 }
 
 export function createUser(email: string, password: string, username: string): User {
     //gen token
-    let tokenGeneration:string = ""; //random token generation
+    let tokenGeneration:string = ""; //random token generation, from authModule
     let id: string = ""; //random id
-    let salt: string = ""; //salt
-    let passwordHash: string = "" + password;
+    let salt: string = bcrypt.genSalt(10); //salt
+    let passwordHash: string = bcrypt.hash(password, salt); //hashed password
 
     let _user:User = 
     {
@@ -27,8 +28,7 @@ export function createUser(email: string, password: string, username: string): U
         email: email, 
         passwordHash: passwordHash, 
         tokenGeneration: tokenGeneration,
-        salt: salt 
-    }; // TODO; FIX SALT
+    }; 
 
     return _user;
     
