@@ -14,7 +14,7 @@ export default new Vuex.Store({
     authenticationState: new AuthenticationState
   },
   mutations: {
-    Authenticate(state, token: string, expiration?: number): void{
+    authenticate(state, token: string, expiration?: number): void{
       
       let authState = new AuthenticationState;
       authState.BearerToken = token;
@@ -27,7 +27,7 @@ export default new Vuex.Store({
   actions: {
   },
   getters: {
-    IsAuthenticated(state) {
+    isAuthenticated(state) {
       if (DateTime.fromSeconds(state.authenticationState.ExpirationTime) <= DateTime.utc())
         return false;
 
@@ -36,7 +36,7 @@ export default new Vuex.Store({
 
       return true;
     },
-    GetBearerToken(state): string {
+    getBearerToken(state): string {
       return state.authenticationState.BearerToken;
     }
   }
