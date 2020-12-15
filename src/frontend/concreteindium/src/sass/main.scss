@@ -1,8 +1,11 @@
 @import "./_variables";
 @import "./_functions";
+@import "./login.scss";
 .text{ //example
     color: $textColor;
     //or, but use the below for the most part
     @include setColor($textColor);
 }
+
+
 
