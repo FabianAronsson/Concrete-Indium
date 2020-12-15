@@ -1,6 +1,7 @@
 import {storeInput, connect, dispose} from './../dBmodule';
 import User from './../interfaces/user';
-import jwt from "jsonwebtoken"; //error, no default export ???
+import * as jwt from "jsonwebtoken"; //error, no default export ???
+const bcrypt = require('bcrypt')
 
 export default class AuthenticationModule {
 
@@ -10,24 +11,41 @@ export default class AuthenticationModule {
     constructor() {
         connect(); //TODO: inject instead and or add disposal
     }
+    
     ///
     authenticateUser(token:string):boolean {
 
-        return false;
+        var key = 'f6441bb8e8f656ad708ae43f355a0c8c59d2cef50567792286007ce410aa34ba999c974a293806485ebab9df15749146a419f2ffd824c888d2638e9caf313940'
+        jwt.verify(token, key, {algorithms: ['RS256', /*other algorithms*/]}, function(err, decoded) {
+            if(err){ //any error, expired or invalid or both
+                return false;
+            }
+            else{
+                return true;
+            }
+          });
+          return false; // if for any other reason, return false
     }
 
-    authenticateUserWithPassword(email:string, password:string):boolean {
-
-        return false;
+    authenticateUserWithPassword(password:string):boolean {
+        try{
+            /*let user = findOne(person in database, search for email)*/
+            let user = { hash: "" }; //dummy variable
+            if(user){
+                let isPasswordCorrect:boolean = bcrypt.compare(password, user.hash) //if user exists in DB then it will also have the corresponding hash
+                return isPasswordCorrect; 
+            }
+        }
+        catch{ //error, password or email is incorrect
+            console.log("Wrong password or email, or user does not exist")
+            return false;
+        }
     }
 
-    ///
     createToken(user:User):string {
         var signedToken = jwt.sign({ email: user.email },
         'f6441bb8e8f656ad708ae43f355a0c8c59d2cef50567792286007ce410aa34ba999c974a293806485ebab9df15749146a419f2ffd824c888d2638e9caf313940' ,
         { algorithm: 'RS256', expiresIn: '10m' } ) 
         return signedToken;
     }
-
-    
 }
