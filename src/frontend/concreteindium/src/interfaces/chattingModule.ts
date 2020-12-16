@@ -4,6 +4,7 @@ export default interface IChattingModule {
 
 
   Connect(): void;
+  SendMessage(message: IMessage): boolean;
 }
 
 
@@ -13,9 +14,11 @@ export interface IMessage {
 }
 
 export interface IChatOptions {
-  
+  interval: number; 		//ms
+  channel: string;		//
+  authenticationToken: string; 	// 
 }
 
-export interface iChatConnectionResult {
+export interface IChatConnectionResult {
 
 }
