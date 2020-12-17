@@ -3,14 +3,20 @@ export default interface IChattingModule {
   chatOptions: IChatOptions; 
 
 
-  Connect(): void;
+  Connect(): Promise<IChatConnectionResult>;
   SendMessage(message: IMessage): boolean;
 }
 
 
 
 export interface IMessage {
-  
+  MessageId: string;
+  MessageTimestamp: number	//unix time utc
+
+  SenderId: string;
+  SenderUsername: string;
+
+  Content: string;
 }
 
 export interface IChatOptions {
@@ -20,5 +26,5 @@ export interface IChatOptions {
 }
 
 export interface IChatConnectionResult {
-
+  ConnectionSucessfull: boolean;
 }
