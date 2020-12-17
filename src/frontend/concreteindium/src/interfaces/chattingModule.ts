@@ -1,5 +1,5 @@
 export default interface IChattingModule {
-  updatedChatCallback: () => IMessage[];
+  updateChatCallback: (message: IMessage[]) => void;
   chatOptions: IChatOptions; 
 
 

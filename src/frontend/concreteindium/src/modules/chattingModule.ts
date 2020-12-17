@@ -1,7 +1,9 @@
 import * as chatDefinitions from '../interfaces/chattingModule';
+import axios from 'axios';
+
 
 export default class ChattingModule implements chatDefinitions.default {
-  public updatedChatCallback: () => chatDefinitions.IMessage[];
+  public updateChatCallback: (message: chatDefinitions.IMessage[]) => void;
   public chatOptions: chatDefinitions.IChatOptions; 
 
   private static baseurl: ""; 
@@ -9,8 +11,8 @@ export default class ChattingModule implements chatDefinitions.default {
   private static sendMessage: '${baseurl}';
   
 
-  constructor(callback: () => chatDefinitions.IMessage[], options: chatDefinitions.IChatOptions) {
-    this.updatedChatCallback = callback;
+  constructor(callback: (message: chatDefinitions.IMessage[]) => void, options: chatDefinitions.IChatOptions) {
+    this.updateChatCallback = callback;
     this.chatOptions = options;
   }
 
@@ -26,20 +28,38 @@ export default class ChattingModule implements chatDefinitions.default {
 
 
   private MessageFromJson(json: string): chatDefinitions.IMessage[] {
-    return <chatDefinitions.IMessage[]>JSON.parse(""); 
+    if (json != null || json !== '')
+    return <chatDefinitions.IMessage[]>JSON.parse(json);
+
+    return new Array<chatDefinitions.IMessage>();
   }
 
   private GetUpdates(): string {
-    return "";
+    axios({
+      url: ChattingModule.getchat, 
+      method: "GET",
+      headers: {
+	aut: 'Bearer ${this.chatOptions.authenticationToken}'
+      },
+      responseType: "json"
+    }).then((response) => {
+      if (response.status != 200)
+	return "";
+
+      return response.data;
+    });
+    
+    return ""; //defaulting
   }
 
+
   private PushUpdates(update: chatDefinitions.IMessage[]): void {
-    
+   this.updateChatCallback(update); 
   }
 
 }
 
-
+//----------------------------data interfaces definitions-----------------------------
 class ChatConnectionResult implements chatDefinitions.IChatConnectionResult {
   public ConnectionSucessfull: boolean;
 
