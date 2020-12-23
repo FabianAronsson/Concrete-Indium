@@ -1,0 +1,41 @@
+@import "./_variables";
+@import "./_functions";
+
+.livechat-grid-container {
+    display: grid;
+    margin: 50px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.livechat-grid-item {
+    margin: 5px;
+    padding: 2em;
+    border-radius: 15px;
+    background-color: rgb(216, 216, 216);
+}
+
+.server-info {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+}
+
+.server-scroll-list {
+    grid-row: 2 / 4;
+    grid-column: 1 / 2;
+}
+
+.server-header {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+}
+
+.server-textfield {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}
+
+.server-textinput {
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+}
