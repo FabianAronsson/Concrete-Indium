@@ -32,7 +32,7 @@ import particles from 'particles.js';
     HelloWorld,
   },
 })
-//export default class Login extends Vue {
+export default class Login extends Vue {}
     
   //mounted():void{
     //particles.load('particles-js', '../assets/particles.json', () =>  {
