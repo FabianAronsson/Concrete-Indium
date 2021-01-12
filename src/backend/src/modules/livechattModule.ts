@@ -19,3 +19,8 @@ export function newchatMessage(username, timestamp, message): string {
 
     return userData;
 }
+
+export function getChatMessage(){
+    let foundChatMessage = UserData.find({});
+    return foundChatMessage;
+}
