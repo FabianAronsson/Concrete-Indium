@@ -4,7 +4,8 @@ export default interface IChattingModule {
 
 
   Connect(): Promise<IChatConnectionResult>;
-  SendMessage(message: IMessage): boolean;
+  CloseConnection(): void;
+  SendMessage(message: IMessage): Promise<void>;
 }
 
 

@@ -9,7 +9,8 @@ export default class ChattingModule implements chatDefinitions.default {
   private static baseurl: ""; 
   private static getchat: '${baseurl}';
   private static sendMessage: '${baseurl}';
-  
+ 
+  private _timer: number = 0;
 
   constructor(callback: (message: chatDefinitions.IMessage[]) => void, options: chatDefinitions.IChatOptions) {
     this.updateChatCallback = callback;
@@ -18,14 +19,39 @@ export default class ChattingModule implements chatDefinitions.default {
 
 
   public async Connect(): Promise<chatDefinitions.IChatConnectionResult>{
-   return new ChatConnectionResult(); 
+    let timer = setInterval(async () => {
+      await this.UpdateChat();
+    }, this.chatOptions.interval)
+    this._timer = timer;
+
+    
+
+    return new ChatConnectionResult(); 
   }
 
   
-  public SendMessage(message: chatDefinitions.IMessage): boolean {
-    return false;
+  public async SendMessage(message: chatDefinitions.IMessage): Promise<void> {
+    var json = JSON.stringify(message);
+
+    await axios({
+      url: ChattingModule.sendMessage,
+      method: "POST",
+      headers: 'Bearer ${this.chatOptions.authenticationToken}',
+      responseType: "json"
+      });
   }
 
+  CloseConnection(): void {
+    clearInterval(this._timer);
+  }
+
+  private async UpdateChat(): Promise<void> {
+    let json = await this.GetUpdates();
+    let message = this.MessageFromJson(json);
+
+    this.updateChatCallback(message);
+  }
+  
 
   private MessageFromJson(json: string): chatDefinitions.IMessage[] {
     if (json != null || json !== '')
@@ -34,8 +60,8 @@ export default class ChattingModule implements chatDefinitions.default {
     return new Array<chatDefinitions.IMessage>();
   }
 
-  private GetUpdates(): string {
-    axios({
+  private async GetUpdates(): Promise<string >{
+    await axios({
       url: ChattingModule.getchat, 
       method: "GET",
       headers: {
