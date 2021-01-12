@@ -1,4 +1,5 @@
 import * as mongoose from "mongoose";
+import AuthenticationModule from "./authenticationModule";
 
 const chatMessageSchema = new mongoose.Schema({
     username: String,
@@ -6,21 +7,23 @@ const chatMessageSchema = new mongoose.Schema({
     message: String,
 })
 
-const UserData = mongoose.model('MESSAGE', chatMessageSchema);
+const UserMessageModel = mongoose.model('MESSAGE', chatMessageSchema);
 
+var AuthModel = new AuthenticationModule;
+AuthModel.authenticateUser;
 
-export function newchatMessage(username, timestamp, message): string {
+export function newchatMessage(username, timestamp, message): any {
     
-    var userData = new UserData({
+    var userMessageModel = new UserMessageModel({
         username: username,
         timestamp: timestamp,
         message: message,
     })
 
-    return userData;
+    return userMessageModel;
 }
 
 export function getChatMessage(){
-    let foundChatMessage = UserData.find({});
+    let foundChatMessage = UserMessageModel.find({});
     return foundChatMessage;
 }
