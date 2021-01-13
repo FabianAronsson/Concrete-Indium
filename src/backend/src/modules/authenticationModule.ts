@@ -1,18 +1,14 @@
 import {storeInput, connect, dispose} from './../dBmodule';
+import { injectable, inject } from "inversify";
+import * as mongoose from "mongoose";
 import User from './../interfaces/user';
-import * as jwt from "jsonwebtoken"; //error, no default export ???
+import * as jwt from "jsonwebtoken";
+import authenticationModule from '../interfaces/authenticationModule';
 const bcrypt = require('bcrypt')
 
-export default class AuthenticationModule {
+@injectable()
+export default class AuthenticationModule implements authenticationModule{
 
-    /**
-     *
-     */
-    constructor() {
-        connect(); //TODO: inject instead and or add disposal
-    }
-    
-    ///
     authenticateUser(token:string):boolean {
 
         var key = 'f6441bb8e8f656ad708ae43f355a0c8c59d2cef50567792286007ce410aa34ba999c974a293806485ebab9df15749146a419f2ffd824c888d2638e9caf313940'
@@ -27,12 +23,11 @@ export default class AuthenticationModule {
           return false; // if for any other reason, return false
     }
 
-    authenticateUserWithPassword(password:string):boolean {
+    authenticateUserWithPassword(email:string, password:string):boolean {
         try{
-            /*let user = findOne(person in database, search for email)*/
-            let user = { hash: "" }; //dummy variable
+            let user = findOne({}); //???? behöver schemat från usersModule.ts, men vet inte hur.
             if(user){
-                let isPasswordCorrect:boolean = bcrypt.compare(password, user.hash) //if user exists in DB then it will also have the corresponding hash
+                let isPasswordCorrect:boolean = bcrypt.compare(password, user.passwordHash) //if user exists in DB then it will also have the corresponding hash
                 return isPasswordCorrect; 
             }
         }
