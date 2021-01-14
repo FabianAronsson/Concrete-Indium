@@ -2,7 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var TYPES = {
     UserRoute: Symbol("UserRoute"),
-    AuthenticationRoute: Symbol("AuthenticationRoute")
+    AuthenticationRoute: Symbol("AuthenticationRoute"),
+    ChatRoute: Symbol("ChatRoute"),
+    UserModule: Symbol("UserModule")
 };
 exports.default = TYPES;
 //# sourceMappingURL=types.js.map
