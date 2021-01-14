@@ -9,20 +9,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var inversify_1 = require("inversify");
 require("reflect-metadata");
-var AuthenticationRoute = (function () {
-    function AuthenticationRoute() {
+var ChatRoute = (function () {
+    function ChatRoute() {
     }
-    AuthenticationRoute.prototype.authenticationRoute = function () {
+    ChatRoute.prototype.chatRoute = function () {
         var router = express.Router();
         router.post("/", function (req, res) {
-            res.send("POST /authentication/");
+            res.send("POST /chat/");
         });
         return router;
     };
-    AuthenticationRoute = __decorate([
+    ChatRoute = __decorate([
         inversify_1.injectable()
-    ], AuthenticationRoute);
-    return AuthenticationRoute;
+    ], ChatRoute);
+    return ChatRoute;
 }());
-exports.default = AuthenticationRoute;
-//# sourceMappingURL=authenticationRoute.js.map
+exports.default = ChatRoute;
+//# sourceMappingURL=chatRoute.js.map
