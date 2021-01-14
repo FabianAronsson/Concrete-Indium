@@ -4,10 +4,21 @@ import * as mongoose from "mongoose";
 import User from './../interfaces/user';
 import * as jwt from "jsonwebtoken";
 import authenticationModule from '../interfaces/authenticationModule';
-const bcrypt = require('bcrypt')
+import * as bcrypt from 'bcrypt';
+import types from '../types';
+import userModule from '../interfaces/userModule';
 
 @injectable()
 export default class AuthenticationModule implements authenticationModule{
+
+    private _userModule: userModule;
+
+    public constructor(
+      @inject(types.UserModule)userModule: userModule
+    ) {
+      this._userModule = userModule
+    }
+
 
     authenticateUser(token:string):boolean {
 
@@ -23,11 +34,11 @@ export default class AuthenticationModule implements authenticationModule{
           return false; // if for any other reason, return false
     }
 
-    authenticateUserWithPassword(email:string, password:string):boolean {
+    async authenticateUserWithPassword(email:string, password:string):Promise<boolean>{
         try{
-            let user = findOne({}); //???? behöver schemat från usersModule.ts, men vet inte hur.
+            let user = this._userModule.getUser(email);
             if(user){
-                let isPasswordCorrect:boolean = bcrypt.compare(password, user.passwordHash) //if user exists in DB then it will also have the corresponding hash
+                let isPasswordCorrect:boolean = await bcrypt.compare(password, user.passwordHash) //if user exists in DB then it will also have the corresponding hash
                 return isPasswordCorrect; 
             }
         }
