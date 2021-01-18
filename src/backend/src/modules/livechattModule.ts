@@ -12,7 +12,7 @@ const chatMessageSchema = new mongoose.Schema({
 
 const UserMessageModel = mongoose.model('MESSAGE', chatMessageSchema);
 
-export function newchatMessage(username, timestamp, message): any {
+export function newchatMessage(username, timestamp, message): void {
     
     var userMessageModel = new UserMessageModel({
         username: username,
@@ -23,7 +23,7 @@ export function newchatMessage(username, timestamp, message): any {
     return userMessageModel;
 }
 
-export function getChatMessage(){
+export function getChatMessage(): string{
     let foundChatMessage = UserMessageModel.find({});
     return foundChatMessage;
 }
