@@ -69,7 +69,7 @@
 
       <div class="message-inputfield">
         <form action="/livechat" method="POST">
-          <input type="text" name="message" id="message">
+          <input type="text" name="message" id="message" placeholder="type your message here">
           <input type="submit" value="Submit">
         </form>
       </div>
