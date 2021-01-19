@@ -1,15 +1,17 @@
 # Concrete-Indium
-Webbserverprojekt
 
-Ett projekt inom webbserver där målet är att skapa en dynamisk hemsida med livechatt (och kanske forum).
+A project in the web server development course, where the goal is to create a dynamic live chat using web development technologies.
 
 # Members
-Fabian
+<ul>
+  <li>Fabian</li>
+  <li>Rasmus B</li>
+  <li>Jeffrey</li>
+  <li>Mojje</li>
+  <li>Pablo</li>
+</ul>
 
-Rasmus B
-
-Jeffrey
-
-Mojje
-
-Pablo
+# Course group
+<ul>
+  <li>TE18 Software</li>
+</ul>

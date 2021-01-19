@@ -1,5 +1,4 @@
 import * as bcrypt from "bcrypt";
-import * as authModule from "./../modules/authenticationModule"
 import * as uuid from "uuid";
 
 export default interface User {
@@ -15,7 +14,7 @@ export default interface User {
     tokenGeneration: string;
 }
 
-export function createUser(email: string, password: string, username: string): User {
+export async function createUser(email: string, password: string, username: string): Promise<User> {
     //gen token
     let tokenGeneration:string = ""; //random token generation, from authModule
     const v4options = 
@@ -25,8 +24,8 @@ export function createUser(email: string, password: string, username: string): U
         ],
     };
     let id: string = uuid.v4(v4options); //random id
-    let salt: string = bcrypt.genSalt(10); //salt
-    let passwordHash: string = bcrypt.hash(password, salt); //hashed password
+    let salt: string = await bcrypt.genSalt(10); //salt
+    let passwordHash: string = await bcrypt.hash(password, salt); //hashed password
 
     let _user:User = 
     {
