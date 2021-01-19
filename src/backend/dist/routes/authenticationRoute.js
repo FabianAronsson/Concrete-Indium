@@ -12,7 +12,7 @@ require("reflect-metadata");
 var AuthenticationRoute = (function () {
     function AuthenticationRoute() {
     }
-    AuthenticationRoute.prototype.userRoute = function () {
+    AuthenticationRoute.prototype.authenticationRoute = function () {
         var router = express.Router();
         router.post("/", function (req, res) {
             res.send("POST /authentication/");

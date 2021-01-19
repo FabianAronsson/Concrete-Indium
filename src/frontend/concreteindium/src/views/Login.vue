@@ -33,11 +33,4 @@ import particles from 'particles.js';
   },
 })
 export default class Login extends Vue {}
-    
-  //mounted():void{
-    //particles.load('particles-js', '../assets/particles.json', () =>  {
-      //console.log('callback - particles-js config loaded');
-   // });
-  //}
-//}
 </script>

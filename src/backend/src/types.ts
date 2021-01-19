@@ -1,10 +1,12 @@
-import UserRoute from "./interfaces/userRoute";
 
 
 let TYPES = {
     UserRoute: Symbol("UserRoute"),
     AuthenticationRoute: Symbol("AuthenticationRoute"),
-    ChatRoute: Symbol("ChatRoute")
+    ChatRoute: Symbol("ChatRoute"),
+    UserModule: Symbol("UserModule"),
+    DbModule: Symbol("DbModule"),
+    LiveChatModule: Symbol("LiveChatModule")
 }
 
 export default TYPES;

@@ -1,32 +1,48 @@
 import * as mongoose from "mongoose";
+import IDbModule from './interfaces/dbmodule';
+import {injectable} from 'inversify';
 
-let db:mongoose.Connection = null;
+
+@injectable()
+export default class DbModule implements IDbModule {
+  private _db : mongoose.Connection;
 
 
-export function connect(): void {
-    mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
-
-    db = mongoose.connection;
-    db.on('error', console.error.bind(console, 'connection error:'));
-    db.on('open', function() : void{
+  public connect(): void {
+      mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
+  
+      this._db = mongoose.connection;
+      this._db.on('error', console.error.bind(console, 'connection error:'));
+      this._db.on('open', function() : void{
         //PogChamp
-        console.log("opened db connection");
-    });
-    db.on('close', () => {
-        console.log("closed db connection");
-    });
-}
+	  console.log("opened db connection");
+      });
+      this._db.on('close', () => {
+	  console.log("closed db connection");
+      });
+  }
 
-export function dispose(): void {
-    if (db != null) {
-        db.close();
-    }
+  public dispose(): void {
+      if (this._db != null) {
+          this._db.close();
+	  this._db == null;
+      }
     
+  }
+
+ public isConnected(): boolean {
+  return this._db != null;
+ }
+ 
+
+
+  public storeInput(input: any): void{
+      input.save(() => {
+        //console.log("save successful")
+      });
+  };
+
 }
 
 
-export function storeInput(input: any): void{
-    input.save(() => {
-        //console.log("save successful")
-    });
-};
+
