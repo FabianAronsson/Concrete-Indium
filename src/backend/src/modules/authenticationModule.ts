@@ -1,6 +1,4 @@
-import {storeInput, connect, dispose} from './../dBmodule';
 import { injectable, inject } from "inversify";
-import * as mongoose from "mongoose";
 import User from './../interfaces/user';
 import * as jwt from "jsonwebtoken";
 import authenticationModule from '../interfaces/authenticationModule';

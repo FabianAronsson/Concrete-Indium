@@ -8,12 +8,22 @@ import AuthenticationRoute from "./routes/authenticationRoute";
 import ChatRouteInterface from "./interfaces/chatRoute"
 import ChatRoute from "./routes/chatRoute";
 
+import DbModule from "./dBmodule";
+import IDbModule from "./interfaces/dbmodule";
 
-let container = new Container({ defaultScope: "Singleton" });
+import LiveChatModule from "./modules/livechattModule";
+import ILiveChatModule from "./interfaces/livechattmodule";
+
+
+
+let container:Container = new Container({ defaultScope: "Singleton" });
 
 //container.bind<type>(TYPES.type).to(implimentation);
 container.bind<UserRouteInterface>(TYPES.UserRoute).to(UserRoute);
 container.bind<AuthenticationRouteInterface>(TYPES.AuthenticationRoute).to(AuthenticationRoute);
 container.bind<ChatRouteInterface>(TYPES.ChatRoute).to(ChatRoute);
+container.bind<IDbModule>(TYPES.DbModule).to(DbModule);
+container.bind<ILiveChatModule>(TYPES.LiveChatModule).to(LiveChatModule);
+
 
 export default container;
