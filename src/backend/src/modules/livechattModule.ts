@@ -1,29 +1,51 @@
 import * as mongoose from "mongoose";
-import AuthenticationModule from "./authenticationModule";
+import Message from '../interfaces/message';
+import dbModule from '../interfaces/dbmodule';
+import types from '../types';
+import {injectable, inject} from 'inversify';
+import IChatModule from '../interfaces/livechattmodule';
 
-var AuthModel = new AuthenticationModule;
-AuthModel.authenticateUser;
 
-const chatMessageSchema = new mongoose.Schema({
+@injectable()
+export default class ChattModule implements IChatModule {
+  
+
+  private _dbModule :  dbModule;
+
+  private chatMessageSchema = new mongoose.Schema({
     username: String,
     timestamp: String,
     message: String,
-})
+  });
 
-const UserMessageModel = mongoose.model('MESSAGE', chatMessageSchema);
+  private UserMessageModel = mongoose.model('MESSAGE', this.chatMessageSchema);
 
-export function newchatMessage(username, timestamp, message): void {
+
+  public constructor (@inject(types.DbModule) dbmodule: dbModule) {
+    this._dbModule = dbmodule;
+    //inject authenticationModule
+  } 
+
+    NewchatMessage(username:string, timestamp:string, message:string): void {
     
-    var userMessageModel = new UserMessageModel({
+      var userMessageModel = new this.UserMessageModel({
         username: username,
         timestamp: timestamp,
         message: message,
-    })
+      });
 
-    return userMessageModel;
+      this._dbModule.storeInput(userMessageModel);
 }
 
-export function getChatMessage(): string{
-    let foundChatMessage = UserMessageModel.find({});
-    return foundChatMessage;
+    async GetChatMessage(): Promise<Array<Message>>{
+      await this.UserMessageModel.find({}, (error, result) => {
+	if (error != null) 
+	  {return new Array<Message>();}
+	return <Array<Message>>(<unknown>result);
+      });
+
+      return new Array<Message>();
+    }
 }
+
+
