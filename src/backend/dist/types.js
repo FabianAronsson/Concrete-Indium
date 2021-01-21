@@ -4,7 +4,9 @@ var TYPES = {
     UserRoute: Symbol("UserRoute"),
     AuthenticationRoute: Symbol("AuthenticationRoute"),
     ChatRoute: Symbol("ChatRoute"),
-    UserModule: Symbol("UserModule")
+    UserModule: Symbol("UserModule"),
+    DbModule: Symbol("DbModule"),
+    LiveChatModule: Symbol("LiveChatModule")
 };
 exports.default = TYPES;
 //# sourceMappingURL=types.js.map
