@@ -2,11 +2,9 @@ import AuthenticationRouteInterface from "./../interfaces/authenticationRoute";
 import * as express from "express";
 import { injectable, inject } from "inversify";
 import "reflect-metadata";
-import * as jwt from "jsonwebtoken";
 import authenticationModule from '../modules/authenticationModule';
 import types from '../types';
 import userModule from '../interfaces/userModule';
-import UserModule from "../modules/usersModule";
 
 
 @injectable()
