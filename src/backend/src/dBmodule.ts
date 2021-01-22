@@ -36,8 +36,8 @@ export default class DbModule implements IDbModule {
  
 
 
-  public storeInput(input: any): void{
-      input.save(() => {
+  public async storeInput(input: mongoose.Document): Promise<void>{
+      await input.save(() => {
         //console.log("save successful")
       });
   };
