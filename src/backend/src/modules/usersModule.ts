@@ -19,21 +19,25 @@ const User = mongoose.model('Person', userSchema);
 
 @injectable()
 export default class UserModule implements userModule{
+
+
    createUser(username: String, email: String, password: String): void {
       var newUser = new User({
         username: username,
         email: email,
         password: password
-      })
+      });
 
-      
+          
       //replace with db module save
    }
   
   
 
-  getUser(email : String): user {
-    let user = <unknown>User.findOne({email: email})
+  public async getUser(email : String): Promise<user> {
+    let user = <unknown>(await User.findOne({email: email}))
     return <user>user;
     };
+
+
   }
