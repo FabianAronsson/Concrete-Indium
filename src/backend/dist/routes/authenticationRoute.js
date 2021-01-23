@@ -67,19 +67,7 @@ var AuthenticationRoute = (function () {
                 switch (_a.label) {
                     case 0:
                         email = req.body.email;
-                        return [4, this._userModule.getUser(email)];
-                    case 1:
-                        user = _a.sent();
-                        return [4, this._authenticationModule.authenticateUserWithPassword(email, req.body.password)];
-                    case 2:
-                        if (_a.sent()) {
-                            accessToken = this._authenticationModule.createToken(user);
-                            res.json({ accessToken: accessToken });
-                        }
-                        else {
-                            res.sendStatus(401);
-                        }
-                        return [2];
+
                 }
             });
         }); });
