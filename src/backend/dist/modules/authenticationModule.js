@@ -74,19 +74,21 @@ var AuthenticationModule = (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _b.trys.push([0, 3, , 4]);
-                        user = this._userModule.getUser(email);
-                        if (!user) return [3, 2];
-                        return [4, bcrypt.compare(password, user.passwordHash)];
+                        _b.trys.push([0, 4, , 5]);
+                        return [4, this._userModule.getUser(email)];
                     case 1:
+                        user = _b.sent();
+                        if (!user) return [3, 3];
+                        return [4, bcrypt.compare(password, user.passwordHash)];
+                    case 2:
                         isPasswordCorrect = _b.sent();
                         return [2, isPasswordCorrect];
-                    case 2: return [3, 4];
-                    case 3:
+                    case 3: return [3, 5];
+                    case 4:
                         _a = _b.sent();
                         console.log("Wrong password or email, or user does not exist");
                         return [2, false];
-                    case 4: return [2];
+                    case 5: return [2];
                 }
             });
         });

@@ -34,7 +34,7 @@ export default class AuthenticationModule implements authenticationModule{
 
     async authenticateUserWithPassword(email:string, password:string):Promise<boolean>{
         try{
-            let user = this._userModule.getUser(email);
+            let user = await this._userModule.getUser(email);
             if(user){
                 let isPasswordCorrect:boolean = await bcrypt.compare(password, user.passwordHash) //if user exists in DB then it will also have the corresponding hash
                 return isPasswordCorrect; 
