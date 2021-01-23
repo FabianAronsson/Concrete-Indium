@@ -1,6 +1,7 @@
 import * as mongoose from "mongoose";
 import IDbModule from './interfaces/dbmodule';
 import {injectable} from 'inversify';
+import dotenv from 'dotenv';
 
 
 @injectable()
@@ -14,6 +15,7 @@ export default class DbModule implements IDbModule {
       this._db = mongoose.connection;
       this._db.on('error', console.error.bind(console, 'connection error:'));
       this._db.on('open', function() : void{
+        dotenv.config();
         //PogChamp
 	  console.log("opened db connection");
       });
