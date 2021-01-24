@@ -44,6 +44,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose = require("mongoose");
 var inversify_1 = require("inversify");
+var dotenv = require("dotenv");
 var DbModule = (function () {
     function DbModule() {
     }
@@ -52,6 +53,7 @@ var DbModule = (function () {
         this._db = mongoose.connection;
         this._db.on('error', console.error.bind(console, 'connection error:'));
         this._db.on('open', function () {
+            dotenv.config();
             console.log("opened db connection");
         });
         this._db.on('close', function () {
