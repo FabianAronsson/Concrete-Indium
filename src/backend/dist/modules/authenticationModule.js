@@ -57,8 +57,7 @@ var AuthenticationModule = (function () {
         this._userModule = userModule;
     }
     AuthenticationModule.prototype.authenticateUser = function (token) {
-        var key = 'f6441bb8e8f656ad708ae43f355a0c8c59d2cef50567792286007ce410aa34ba999c974a293806485ebab9df15749146a419f2ffd824c888d2638e9caf313940';
-        jwt.verify(token, key, { algorithms: ['RS256',] }, function (err, decoded) {
+        jwt.verify(token, process.env.CLIENT_SECRET, { algorithms: ['RS256',] }, function (err, decoded) {
             if (err) {
                 return false;
             }
@@ -94,7 +93,7 @@ var AuthenticationModule = (function () {
         });
     };
     AuthenticationModule.prototype.createToken = function (user) {
-        var signedToken = jwt.sign({ email: user.email }, 'f6441bb8e8f656ad708ae43f355a0c8c59d2cef50567792286007ce410aa34ba999c974a293806485ebab9df15749146a419f2ffd824c888d2638e9caf313940', { algorithm: 'RS256', expiresIn: '10m' });
+        var signedToken = jwt.sign({ email: user.email }, process.env.CLIENT_SECRET, { algorithm: 'RS256', expiresIn: '10m' });
         return signedToken;
     };
     AuthenticationModule = __decorate([

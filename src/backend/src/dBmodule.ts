@@ -1,7 +1,7 @@
 import * as mongoose from "mongoose";
 import IDbModule from './interfaces/dbmodule';
 import {injectable} from 'inversify';
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 
 
 @injectable()
