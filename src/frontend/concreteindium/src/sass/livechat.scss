@@ -1,0 +1,124 @@
+@import "./_variables";
+@import "./_functions";
+
+.main-livechat-container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    margin: auto;
+    width: 1000px;
+    height: 600px;
+    border: black;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.server-info-container {
+    display: grid;
+    grid-template-rows: 40% 60%;
+    width: auto;
+    max-height: 600px;
+    border-right: black;
+    border-right-style: solid;
+}
+
+.server-info {
+    margin: auto;
+}
+
+.server-list-container {
+    overflow-y: scroll;
+    margin-left: 10px;
+    margin-right: 25px;
+    margin-bottom: 5px;
+    border: black;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.server-list-item {
+    margin: auto;
+    padding: 25px;
+    border: black;
+    border-top: 0;
+    border-left: 0;
+    border-style: solid;
+    background-color: rgb(255, 255, 255);
+
+    &:hover {
+        background-color: rgb(240, 240, 240);
+        font-weight: bold;
+    }
+}
+
+.textfield-container {
+    display: grid;
+    grid-template-rows: 100px auto 50px;
+    max-width: 600px;
+    max-height: 600px;
+}
+
+.textfield-header {
+    display: grid;
+    grid-template-columns: 100px auto;
+    border: black;
+    border-bottom-style: solid;
+    max-width: 600px;
+
+    img {
+        display: inline;
+        margin: auto;
+        width: 50px;
+        height: 50px;
+        border: black;
+        border-style: solid;
+        border-radius: 50%;
+    }
+
+    div {
+        font-size: 2em;
+        margin: auto;
+        margin-left: 0;
+        font-weight: bold;
+        word-wrap: normal;
+        white-space: normal;
+        max-width: 500px;
+        text-align: left;
+    }
+}
+
+.message-container {
+    overflow-y: scroll;
+    max-height: 450px;
+}
+
+.message {
+    display: grid;
+    grid-template-columns: 75px auto;
+
+    &:hover {
+        background-color: rgb(240, 240, 240);
+    }
+
+    img {
+        margin: auto;
+        margin-top: 10px;
+        width: 40px;
+        height: 40px;
+        border: black;
+        border-radius: 50%;
+        border-style: solid;
+    }
+
+    p {
+        word-wrap: normal;
+    }
+}
+
+.message-inputfield {
+    border: black;
+    border-top-style: solid;
+    #message {
+        width: 75%;
+        height: 30px;
+    }
+}

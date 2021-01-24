@@ -2,14 +2,30 @@
   "name": "concrete-indium-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "node dist/server.js",
+    "build": "tsc"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@types/express": "^4.17.9",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "^14.14.9",
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "typescript": "^4.1.2"
+    "inversify": "^5.0.5",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.15",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^4.1.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/mongoose": "^5.10.1",
+    "@types/uuid": "^8.3.0"
   }
 }

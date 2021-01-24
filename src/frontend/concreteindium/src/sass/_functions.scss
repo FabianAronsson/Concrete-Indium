@@ -1,0 +1,4 @@
+//mixins
+@mixin setColor($textColor){ //example mixin
+    color: $textColor;
+}

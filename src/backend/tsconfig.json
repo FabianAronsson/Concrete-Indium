@@ -1,11 +1,17 @@
 {
     "compilerOptions": {
-      "module": "system",
+      "target": "es5",
+      "module": "CommonJS",
+      "lib": ["es6"],
+      "types": ["reflect-metadata"],
       "noImplicitAny": true,
       "removeComments": true,
       "preserveConstEnums": true,
-      "outFile": "../../built/local/tsc.js",
-      "sourceMap": true
+      "outDir": "dist/",
+      "sourceMap": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "resolveJsonModule": true
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "**/*.spec.ts"]

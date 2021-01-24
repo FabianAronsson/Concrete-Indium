@@ -2,13 +2,18 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link>  |
+      <router-link to="/login">Login</router-link>  |
+      <router-link to="/livechat">LiveChat</router-link>
     </div>
     <router-view/>
   </div>
 </template>
 
-<style>
+<style lang="scss">
+@import './sass/main.scss';
+
+//below should be removed in the future to use sass instead or handled differently
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
